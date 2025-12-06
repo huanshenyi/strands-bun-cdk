@@ -18,7 +18,7 @@ const asyncPipeline = promisify(streamPipeline);
 
 // BedrockAgentCoreクライアントの初期化
 const agentCoreClient = new BedrockAgentCoreClient({
-  region: process.env.AWS_REGION || "us-west-2",
+  region: process.env.AWS_REGION || "ap-northeast-1",
 });
 
 // クライアントリクエストの構造定義

@@ -1,18 +1,18 @@
 import * as cdk from "aws-cdk-lib";
 import * as path from "path";
-import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as iam from "aws-cdk-lib/aws-iam";
-import * as nodejs from "aws-cdk-lib/aws-lambda-nodejs";
-import * as logs from "aws-cdk-lib/aws-logs";
 import * as agentcore from "@aws-cdk/aws-bedrock-agentcore-alpha";
 import { Construct } from "constructs";
+import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as nodejs from "aws-cdk-lib/aws-lambda-nodejs";
+import * as logs from "aws-cdk-lib/aws-logs";
 
 export class StrandsBunCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const agentRuntimeArtifact = agentcore.AgentRuntimeArtifact.fromAsset(
-      path.join(__dirname, "../agent"),
+      path.join(__dirname, "../agent")
     );
 
     const runtime = new agentcore.Runtime(this, "StrandsAgentsRuntime", {
@@ -32,7 +32,7 @@ export class StrandsBunCdkStack extends cdk.Stack {
           "arn:aws:bedrock:*::foundation-model/*",
           `arn:aws:bedrock:${this.region}:${this.account}:inference-profile/*`,
         ],
-      }),
+      })
     );
 
     // =====================
@@ -61,10 +61,10 @@ export class StrandsBunCdkStack extends cdk.Stack {
           AGENT_ARN: runtime.agentRuntimeArn,
         },
         logGroup: lambdaLogGroup,
-      },
+      }
     );
 
-    // AgentCore Runtime呼び出し権限を付与
+    // // AgentCore Runtime呼び出し権限を付与
     proxyFunction.addToRolePolicy(
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
@@ -73,7 +73,7 @@ export class StrandsBunCdkStack extends cdk.Stack {
           runtime.agentRuntimeArn,
           `${runtime.agentRuntimeArn}/runtime-endpoint/*`,
         ],
-      }),
+      })
     );
 
     // =====================
