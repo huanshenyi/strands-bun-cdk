@@ -1,6 +1,7 @@
 import * as cdk from "aws-cdk-lib";
 import * as path from "path";
 import * as iam from "aws-cdk-lib/aws-iam";
+import * as apigateway from "aws-cdk-lib/aws-apigateway";
 import * as agentcore from "@aws-cdk/aws-bedrock-agentcore-alpha";
 import { Construct } from "constructs";
 import * as lambda from "aws-cdk-lib/aws-lambda";
@@ -77,6 +78,23 @@ export class StrandsBunCdkStack extends cdk.Stack {
     );
 
     // =====================
+    // API Gateway（ストリーミング対応）
+    // =====================
+
+    const api = new apigateway.RestApi(this, "AgentCoreApi", {
+      restApiName: "agentcore-streaming-api",
+      description: "AgentCore Proxy API with response streaming",
+    });
+
+    const lambdaIntegration = new apigateway.LambdaIntegration(proxyFunction, {
+      proxy: true,
+      responseTransferMode: apigateway.ResponseTransferMode.STREAM,
+      timeout: cdk.Duration.millis(900000),
+    });
+
+    api.root.addMethod("POST", lambdaIntegration);
+
+    // =====================
     // Outputs
     // =====================
 
@@ -106,5 +124,14 @@ export class StrandsBunCdkStack extends cdk.Stack {
       value: proxyFunction.functionArn,
       description: "AgentCore Proxy Lambda Function ARN",
     });
+
+    new cdk.CfnOutput(this, "ApiEndpoint", {
+      value: api.url,
+      description: "API Gateway Endpoint URL",
+    });
+
+    // SCP 対策: スタック内全リソースにタグを付与
+    cdk.Tags.of(this).add("Project", "strands-bun-cdk");
+    cdk.Tags.of(this).add("Environment", "dev");
   }
 }

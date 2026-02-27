@@ -1,0 +1,155 @@
+<mxfile host="app.diagrams.net" agent="Claude" version="26.0.0">
+  <diagram id="infra-architecture" name="Infrastructure Architecture">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- AWS Cloud boundary -->
+        <mxCell id="aws-cloud" value="AWS Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=14;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#AAB7B8;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;spacingTop=5;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="220" y="40" width="1300" height="820" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- Client (User) -->
+        <!-- ============================================ -->
+        <mxCell id="client" value="Client&#xa;(User)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.user;" vertex="1" parent="1">
+          <mxGeometry x="60" y="280" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- API Gateway -->
+        <!-- ============================================ -->
+        <mxCell id="apigw" value="Amazon API Gateway&#xa;agentcore-streaming-api&#xa;(REST API)" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#FF4F8B;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
+          <mxGeometry x="320" y="280" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- Lambda Function -->
+        <!-- ============================================ -->
+        <mxCell id="lambda" value="AWS Lambda&#xa;agentcore-proxy&#xa;Node.js 24 | 512 MB | 15 min" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="580" y="280" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- CloudWatch Logs -->
+        <!-- ============================================ -->
+        <mxCell id="cwlogs" value="Amazon CloudWatch Logs&#xa;/aws/lambda/agentcore-proxy&#xa;(Retention: 1 week)" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F34482;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch;" vertex="1" parent="1">
+          <mxGeometry x="580" y="570" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- Bedrock AgentCore Runtime -->
+        <!-- ============================================ -->
+        <mxCell id="agentcore" value="Amazon Bedrock&#xa;AgentCore Runtime&#xa;(StrandsAgentsTS)" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#1F8B6C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;" vertex="1" parent="1">
+          <mxGeometry x="870" y="280" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- Amazon Bedrock Foundation Models -->
+        <!-- ============================================ -->
+        <mxCell id="bedrock" value="Amazon Bedrock&#xa;Foundation Models" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4AB29A;gradientDirection=north;fillColor=#1F8B6C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="280" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- IAM Role - Lambda Execution Role -->
+        <!-- ============================================ -->
+        <mxCell id="iam-lambda" value="IAM Role&#xa;Lambda Execution Role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#BF0816;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;" vertex="1" parent="1">
+          <mxGeometry x="440" y="570" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- IAM Role - AgentCore Execution Role -->
+        <!-- ============================================ -->
+        <mxCell id="iam-agentcore" value="IAM Role&#xa;AgentCore Execution Role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F54749;gradientDirection=north;fillColor=#BF0816;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;" vertex="1" parent="1">
+          <mxGeometry x="870" y="570" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- Connections -->
+        <!-- ============================================ -->
+
+        <!-- Client → API Gateway -->
+        <mxCell id="edge-client-apigw" value="POST" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#232F3E;strokeWidth=2;fontSize=11;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;" edge="1" source="client" target="apigw" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- API Gateway → Lambda -->
+        <mxCell id="edge-apigw-lambda" value="Lambda Proxy&#xa;Integration&#xa;(Streaming)" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#232F3E;strokeWidth=2;fontSize=11;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;" edge="1" source="apigw" target="lambda" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Lambda → AgentCore Runtime -->
+        <mxCell id="edge-lambda-agentcore" value="bedrock-agentcore:&#xa;InvokeAgentRuntime" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#232F3E;strokeWidth=2;fontSize=11;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;" edge="1" source="lambda" target="agentcore" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- AgentCore Runtime → Bedrock -->
+        <mxCell id="edge-agentcore-bedrock" value="bedrock:InvokeModel&#xa;InvokeModelWith&#xa;ResponseStream" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#232F3E;strokeWidth=2;fontSize=11;fontColor=#232F3E;labelBackgroundColor=#FFFFFF;" edge="1" source="agentcore" target="bedrock" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Lambda → CloudWatch Logs -->
+        <mxCell id="edge-lambda-cwlogs" value="Logs" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#888888;strokeWidth=1;dashed=1;fontSize=11;fontColor=#888888;labelBackgroundColor=#FFFFFF;" edge="1" source="lambda" target="cwlogs" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- IAM Lambda Role → Lambda -->
+        <mxCell id="edge-iam-lambda" value="Assume Role" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#BF0816;strokeWidth=1;dashed=1;fontSize=10;fontColor=#BF0816;labelBackgroundColor=#FFFFFF;" edge="1" source="iam-lambda" target="lambda" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- IAM AgentCore Role → AgentCore -->
+        <mxCell id="edge-iam-agentcore" value="Assume Role" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#BF0816;strokeWidth=1;dashed=1;fontSize=10;fontColor=#BF0816;labelBackgroundColor=#FFFFFF;" edge="1" source="iam-agentcore" target="agentcore" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- Title -->
+        <!-- ============================================ -->
+        <mxCell id="title" value="Strands Agents CDK — Infrastructure Architecture" style="text;html=1;fontSize=20;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="10" width="500" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- Legend -->
+        <!-- ============================================ -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#CCCCCC;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="680" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" value="Legend" style="text;html=1;fontSize=13;fontStyle=1;fontColor=#232F3E;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="690" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line1" value="" style="endArrow=classic;html=1;strokeColor=#232F3E;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1320" y="730" as="sourcePoint" />
+            <mxPoint x="1380" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-label1" value="Data flow" style="text;html=1;fontSize=11;fontColor=#232F3E;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="720" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line2" value="" style="endArrow=classic;html=1;strokeColor=#888888;strokeWidth=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1320" y="760" as="sourcePoint" />
+            <mxPoint x="1380" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-label2" value="Logging" style="text;html=1;fontSize=11;fontColor=#888888;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="750" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line3" value="" style="endArrow=classic;html=1;strokeColor=#BF0816;strokeWidth=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1320" y="790" as="sourcePoint" />
+            <mxPoint x="1380" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-label3" value="IAM Role" style="text;html=1;fontSize=11;fontColor=#BF0816;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="780" width="100" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
